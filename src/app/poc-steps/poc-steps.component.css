@@ -1,0 +1,161 @@
+:host {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column; 
+    height: 100vh;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+    background-color: #B89A7A; 
+    padding: 20px; 
+    border-radius: 8px 8px 0 0; 
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+    width: 77%; 
+}
+
+.logo {
+    width: 50px;
+    height: auto;
+    margin-right: 15px;
+}
+
+.title {
+    color: white;
+    font-size: 1.5em;
+    font-weight: bold;
+    text-align: center;
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    width: 100%;
+    max-width: 1200px;
+    border-radius: 0 0 8px 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    margin-top: 20px;
+}
+
+.sidebar {
+    width: 30%;
+    background-color: #E0E0E0;
+    padding: 20px;
+    color: #333;
+}
+
+.sidebar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.sidebar ul .step-item {
+    padding: 10px;
+    cursor: pointer;
+    border-bottom: 1px solid #B89A7A;
+    transition: background-color 0.3s;
+}
+
+.sidebar ul .step-item.active {
+    background-color: #D6CFC4;
+}
+
+.sidebar ul .step-item:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+.content {
+    width: 70%;
+    padding: 20px;
+    background-color: #ffffff;
+}
+
+h2 {
+    margin-bottom: 15px;
+    font-size: 1.5em;
+    color: #B89A7A;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 0.9em;
+    color: #666;
+}
+
+input {
+    margin-bottom: 10px;
+    width: calc(100% - 20px);
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    transition: border-color 0.3s;
+}
+
+input::placeholder {
+    color: #aaa;
+    opacity: 1;
+}
+
+input:focus {
+    border-color: #B89A7A;
+}
+
+button {
+    padding: 10px 15px;
+    background-color: #B89A7A;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 5px 5px 0 0;
+}
+
+button:hover {
+    background-color: #A6785B;
+}
+
+#summary-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+
+#summary-table th,
+#summary-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+#summary-table th {
+    background-color: #F5F5F5;
+    text-align: left;
+    color: #B89A7A;
+}
+
+#summary-table td {
+    color: #555;
+}
+
+.step-10 {
+    max-height: 400px;
+    overflow: auto;
+    border: 1px solid #ddd;
+    padding: 15px;
+    background-color: #f9f9f9;
+}
+
+#summary-table th {
+    background-color: #F5F5F5;
+    text-align: left;
+    color: #B89A7A;
+}
+
+#summary-table tbody tr:hover {
+    background-color: #eaeaea;
+}

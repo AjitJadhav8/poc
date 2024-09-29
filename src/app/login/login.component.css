@@ -1,0 +1,17 @@
+.login-navigation {
+    margin-top: 20px;
+  }
+  
+  .navigation-option {
+    padding: 10px;
+    background-color: #f0f0f0;
+    margin: 10px;
+    cursor: pointer;
+    border: 1px solid #ccc;
+    text-align: center;
+  }
+  
+  .navigation-option:hover {
+    background-color: #e0e0e0;
+  }
+  
