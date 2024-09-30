@@ -96,7 +96,7 @@ import { Router } from '@angular/router';
     onLogout() {
       console.log('Logout button clicked');
   
-      localStorage.clear();
+      // localStorage.clear();
       this.router.navigate(['/login/sales']);
     }
   
