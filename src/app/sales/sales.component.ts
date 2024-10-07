@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
   styleUrl: './sales.component.css'
 })
 export class SalesComponent {
-  selectedStep: number = 6; // Default to Step 6
+  selectedStep: number = 6; 
 
   selectStep(step: number) {
     this.selectedStep = step;

@@ -1,24 +1,21 @@
-/* Parent container that centers the content */
 .center-container {
     display: flex;
     justify-content: center;
-    align-items: stretch; /* Stretch children to match heights */
-    height: 60vh; /* Full viewport height */
+    align-items: stretch; 
+    height: 60vh; 
     padding: 100px;
   }
   
-  /* Sidebar container */
-  .sidebar-container {
-    background-color: #3e4e5e; /* Darker, modern sidebar color */
+    .sidebar-container {
+    background-color: #3e4e5e; 
     padding: 20px;
-    width: 250px; /* Make it wider */
-    margin-right: 40px; /* Larger gap between sidebar and content */
-    border-radius: 10px; /* Rounded corners */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
+    width: 250px; 
+    margin-right: 40px; 
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   }
   
-  /* Sidebar styles */
-  .sidebar ul {
+    .sidebar ul {
     list-style-type: none;
     padding: 0;
   }
@@ -26,93 +23,59 @@
   .sidebar ul li {
     padding: 15px 20px;
     cursor: pointer;
-    background-color: #5c6f81; /* Muted modern color */
+    background-color: #5c6f81; 
     margin-bottom: 10px;
     color: white;
-    font-size: 18px; /* Larger font size */
-    border-radius: 5px; /* Slight rounding on buttons */
-    transition: background-color 0.3s ease; /* Smooth hover effect */
+    font-size: 18px;  
+    border-radius: 5px; 
+    transition: background-color 0.3s ease;  
   }
   
   .sidebar ul li:hover {
-    background-color: #738598; /* Lighter hover color */
+    background-color: #738598;  
   }
   
-  /* Content container with scrollbar for overflow */
-  .result-container {
-    background-color: #ffffff; /* Clean white background */
-    padding: 30px; /* More padding for spaciousness */
+    .result-container {
+    background-color: #ffffff; 
+    padding: 30px; 
     border: 1px solid #ddd;
     border-radius: 10px;
-    width: 100%; /* Full width to fit the table */
-    max-width: 100%; /* Prevent overflow */
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Soft shadow for depth */
-    overflow-x: auto; /* Horizontal scroll when table exceeds width */
-    display: flex; /* Allows flexible height */
-    flex-direction: column; /* Keep content vertical */
+    width: 100%; 
+    max-width: 100%; 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); 
+    overflow-x: auto;     display: flex; 
+    flex-direction: column;
   }
   
-  /* Heading styles */
-  .result-container h2 {
-    margin-bottom: 20px; /* Space below the heading */
-    font-size: 28px; /* Adjust size for emphasis */
-    color: #333; /* Darker color for the heading */
-  }
+    .result-container h2 {
+    margin-bottom: 20px;     font-size: 28px;     color: #333;   }
   
   .content {
-    flex-grow: 1; /* Ensure it takes up remaining space */
-  }
+    flex-grow: 1;   }
   
-  /* Table container */
-  #summary-table {
-    width: 100%; /* Full width */
-    border-collapse: collapse; /* Merge borders */
-    margin-top: 15px; /* Space above the table */
-    overflow-x: auto; /* Enable horizontal scrolling */
-  }
+    #summary-table {
+    width: 100%;     border-collapse: collapse;     margin-top: 15px;     overflow-x: auto;   }
   
   #summary-table th,
   #summary-table td {
-    padding: 10px; /* Cell padding */
-    text-align: left; /* Left align text */
-    border: 1px solid #ddd; /* Border for cells */
-    min-width: 150px; /* Ensure the cells don’t shrink too much */
-  }
+    padding: 10px;     text-align: left;     border: 1px solid #ddd;     min-width: 150px;   }
   
   #summary-table th {
-    background-color: #f2f2f2; /* Light grey background for header */
-    color: #333; /* Darker text for header */
-  }
+    background-color: #f2f2f2;     color: #333;   }
   
   #summary-table td {
-    background-color: #ffffff; /* White background for data */
-    color: #555; /* Softer text color */
-  }
+    background-color: #ffffff;     color: #555;   }
   
-  /* Button styles */
-  .result-container button {
-    background-color: #5c6f81; /* Match the sidebar button color */
-    color: white; /* Text color */
-    padding: 10px 20px; /* Padding for the button */
-    border: none; /* No border */
-    border-radius: 5px; /* Rounded corners */
-    font-size: 16px; /* Consistent font size */
-    cursor: pointer; /* Pointer cursor on hover */
-    transition: background-color 0.3s ease; /* Smooth hover effect */
-    margin-bottom: 15px; /* Space below the button */
-  }
+    .result-container button {
+    background-color: #5c6f81;     color: white;     padding: 10px 20px;     border: none;     border-radius: 5px;     font-size: 16px;     cursor: pointer;     transition: background-color 0.3s ease;     margin-bottom: 15px;   }
   
   .result-container button:hover {
-    background-color: #738598; /* Lighter hover effect */
-  }
+    background-color: #738598;   }
   
-  /* Input styles */
-  .content label {
+    .content label {
     display: block;
     margin-top: 5px;
-    font-size: 16px; /* Larger label text */
-    color: #555; /* Softer text color */
-  }
+    font-size: 16px;     color: #555;   }
   
   .content input {
     width: 100%;
@@ -125,40 +88,29 @@
   }
   
   .content input:focus {
-    border-color: #5c6f81; /* Highlight border on focus */
-  }
+    border-color: #5c6f81;   }
   
-  /* Responsive Design for Mobile */
-  @media (max-width: 768px) {
+    @media (max-width: 768px) {
     .center-container {
-      flex-direction: column; /* Stack sidebar and content */
-      align-items: stretch;
+      flex-direction: column;       align-items: stretch;
     }
   
     .sidebar-container {
       margin-right: 0;
       margin-bottom: 20px;
-      width: 100%; /* Full width on mobile */
-    }
+      width: 100%;     }
   
     .result-container {
-      width: 100%; /* Full width on mobile */
-      overflow-x: auto; /* Ensure scroll on mobile */
-    }
+      width: 100%;       overflow-x: auto;     }
   }
   
-  /* Additional styles for manager, manufacturing, and purchase components */
-  .content h3 {
+    .content h3 {
     margin-bottom: 20px;
-    font-size: 24px; /* Larger heading size */
-    color: #333; /* Darker text color */
-  }
+    font-size: 24px;     color: #333;   }
   
   .label-container {
-    margin-top: 15px; /* Margin for label containers */
-  }
+    margin-top: 15px;   }
   
-  /* Button for manager, manufacturing, and purchase components */
   .content button {
     background-color: #5c6f81;
     color: white;
@@ -172,6 +124,5 @@
   }
   
   .content button:hover {
-    background-color: #738598; /* Lighter button hover */
-  }
+    background-color: #738598;   }
   

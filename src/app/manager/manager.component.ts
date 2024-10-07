@@ -57,7 +57,7 @@ export class ManagerComponent {
   fetchSummary() {
     this.http.get('http://localhost:3000/fetch-summary').subscribe(
       (response) => {
-        this.summaryData = response; // Assign the response to the summaryData property
+        this.summaryData = response; 
         console.log('Summary data fetched:', this.summaryData);
       },
       (error) => {
@@ -67,18 +67,15 @@ export class ManagerComponent {
   }
 
   resetSummaryData() {
-    this.summaryData = null; // Clear the data
+    this.summaryData = null; 
   }
 
   submitSummary() {
-    // Get the current date and time in the desired format
     const currentDate = new Date();
-    // Adjust to your local timezone (in hours)
-    const timeZoneOffset = currentDate.getTimezoneOffset() * 60000; // Offset in milliseconds
+    const timeZoneOffset = currentDate.getTimezoneOffset() * 60000;
     const localTime = new Date(currentDate.getTime() + timeZoneOffset);
     const formattedDate = localTime.toISOString().slice(0, 19).replace('T', ' '); 
 
-    // Prepare data to submit
     const payload = {
         plannedQuantity: {
             fabricCat1: this.summaryData.plannedQuantity.fabricCat1,
@@ -116,27 +113,23 @@ export class ManagerComponent {
             employees1: this.summaryData.salariesOverhead.employees1,
             employees2: this.summaryData.salariesOverhead.employees2,
         },
-        createdAt: formattedDate // Add current timestamp here
+        createdAt: formattedDate 
     };
 
-    // Log the payload to check its structure
     console.log('Payload to submit:', payload);
 
-    // Make a POST request to your backend API
     this.http.post('http://localhost:3000/save-summary-data', payload)
         .subscribe(response => {
             console.log('Submission successful!', response);
-            // Handle successful submission (e.g., show a success message)
         }, error => {
             console.error('Submission failed', error);
-            // Handle error (e.g., show an error message)
         });
 }
 
   
   timestamps: string[] = [];
   historicalData: any;
-  selectedTimestamp: string = '';  // Initialize selectedTimestamp
+  selectedTimestamp: string = '';  
 
 
   // fetchTimestamps() {
@@ -180,22 +173,19 @@ export class ManagerComponent {
 
 
 exportToExcel() {
-  // Ensure data is saved or up-to-date before exporting
 
   const data = [
-    // Step headers
     ['Step 1: Planned Quantity', '', 'Step 2: Plant Capacity', '', 'Step 3: BOM Preparation'],
-    // Step 1: Planned Quantity
     ['Fabric Category 1 Quantity', this.summaryData.plannedQuantity?.fabricCat1 ?? 0, 'Capacity of Machine 1', this.summaryData.plantCapacity?.machine1Cap ?? 0, 'Raw Material 1 Quantity', this.summaryData.bomPreparation?.rawMaterial1 ?? 0],
     ['Fabric Category 2 Quantity', this.summaryData.plannedQuantity?.fabricCat2 ?? 0, 'Occupancy of Machine 1', this.summaryData.plantCapacity?.machine1Occ ?? 0, 'Raw Material 2 Quantity', this.summaryData.bomPreparation?.rawMaterial2 ?? 0],
     
-    [], // Empty row for visual separation
+    [], 
 
     ['Step 4: Substandard Fabric', '', 'Step 5: Fuel & Power', '', 'Step 6: Packaging Cost'],
     ['Substandard Fabric Produced at Stage 1', `${this.summaryData.substandardFabric?.subFabric1 ?? 0} Kg`, 'Fuel Requirement of Machine 1', `${this.summaryData.fuelPower?.fuelReq1 ?? 0} Liters`, 'Packaging Cost for Product 1', this.summaryData.packagingCost?.packagingCost1 ?? 0],
     ['Substandard Fabric Produced at Stage 2', `${this.summaryData.substandardFabric?.subFabric2 ?? 0} Kg`, 'Power Requirement of Machine 1', `${this.summaryData.fuelPower?.powerReq1 ?? 0} Kwh`, 'Packaging Cost for Product 2', this.summaryData.packagingCost?.packagingCost2 ?? 0],
     
-    [], // Empty row for visual separation
+    [], 
 
     ['Step 7: Commission Charges', '', 'Step 8: Processing Charges', '', 'Step 9: Salaries Overhead'],
     ['Commission Charges for Product 1', this.summaryData.commissionCharges?.commission1 ?? 0, 'Processing Charges for Product 1', this.summaryData.processingCharges?.contractual1 ?? 0, 'Employees Overhead for Product 1', this.summaryData.salariesOverhead?.employees1 ?? 0],
@@ -205,8 +195,8 @@ exportToExcel() {
   const ws: XLSX.WorkSheet = XLSX.utils.aoa_to_sheet(data);
 
   ws['!cols'] = [
-    { wch: 30 }, // Width of Step columns
-    { wch: 20 }, // Width for data columns
+    { wch: 30 }, 
+    { wch: 20 }, 
     { wch: 30 },
     { wch: 20 },
     { wch: 30 },

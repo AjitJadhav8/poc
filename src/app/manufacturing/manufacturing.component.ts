@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 })
 export class ManufacturingComponent {
 
-  selectedStep: number = 2; // Default to Step 6
+  selectedStep: number = 2; 
 
   selectStep(step: number) {
     this.selectedStep = step;
@@ -28,8 +28,7 @@ export class ManufacturingComponent {
 
   constructor(private http: HttpClient, private router: Router) {}
   logout() {
-    // Clear any session or state management here if necessary
-    this.router.navigate(['/login']);  // Navigate back to login page
+    this.router.navigate(['/login']);
   }
 
   // Method to save Plant Capacity (Step 2)
@@ -86,7 +85,6 @@ export class ManufacturingComponent {
     );
   }
 
-  // Reset functions
   resetPlantCapacity() {
     this.machine1Cap = null;
     this.machine1Occ = null;

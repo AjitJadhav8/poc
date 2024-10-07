@@ -24,9 +24,8 @@ export class LoginComponent {
     this.http.post<{ message: string; username: string }>('http://localhost:3000/login', credentials)
         .subscribe(
             response => {
-                console.log('Response from backend:', response); // Log the entire response
+                console.log('Response from backend:', response);
                 
-                // Check if the username returned matches the expected values
                 switch (response.username) {
                     case 'sales':
                         this.router.navigate(['/sales']);
@@ -46,7 +45,7 @@ export class LoginComponent {
                 }
             },
             error => {
-                alert(error.error.error); // Display error message
+                alert(error.error.error);
             }
         );
 }

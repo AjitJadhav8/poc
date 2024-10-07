@@ -13,8 +13,7 @@ import { Router } from '@angular/router';
 })
 export class PurchaseComponent {
 
-  selectedStep: number = 1; // Default to Step 6
-  
+  selectedStep: number = 1; 
   selectStep(step: number) {
     this.selectedStep = step;
   }
@@ -31,8 +30,7 @@ export class PurchaseComponent {
   constructor(private http: HttpClient, private router: Router) {}
 
   logout() {
-    // Clear any session or state management here if necessary
-    this.router.navigate(['/login']);  // Navigate back to login page
+    this.router.navigate(['/login']);  
   }
   // Method to save Planned Quantity (Step 1)
   savePlannedQuantity() {
