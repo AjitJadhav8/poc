@@ -1,0 +1,161 @@
+<div class="center-container">
+  <!-- Sidebar -->
+  <div class="sidebar-container">
+    <div class="sidebar">
+      <ul>
+        <li (click)="fetchSummary()">Fetch Data</li>
+        <li (click)="submitSummary()">Submit</li>
+        <li (click)="exportToExcel()">Export to Excel</li>
+        <li (click)="logout()">Logout</li>
+         <li (click)="fetchTimestamps()">Historical Data </li>
+         <li><select (change)="fetchHistoricalData($event)">
+          <option *ngFor="let timestamp of timestamps" [value]="timestamp">{{ timestamp | date:'short' }} ⇩</option>
+      </select></li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Content -->
+  <div class="result-container">
+    <h2>Manager Step 10</h2>
+
+    <!-- Scrollable table container -->
+    <div class="table-container">
+      <table id="summary-table">
+        <thead>
+          <tr>
+            <th>1. Planned Quantity</th>
+            <th>2. Plant Capacity</th>
+            <th>3. BOM Preparation</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <p>NYFY HT Yarn Quantity: {{ summaryData.plannedQuantity?.fabricCat1 || '' }}</p>
+              <p>PTCF SPG Quantity: {{ summaryData.plannedQuantity?.fabricCat2 || '' }}</p>
+            </td>
+            <td>
+              <p>Electricity Capacity (Machine 1): {{ summaryData.plantCapacity?.machine1Cap || '' }}</p>
+              <p>Compressed Air Capacity (Machine 2): {{ summaryData.plantCapacity?.machine1Occ || '' }}</p>
+            </td>
+            <td>
+              <p>Steam Quantity: {{ summaryData.bomPreparation?.rawMaterial1 || '' }}</p>
+              <p>Raw Water Quantity: {{ summaryData.bomPreparation?.rawMaterial2 || '' }}</p>
+            </td>
+          </tr>
+          <tr>
+            <th>4. Substandard Fabric</th>
+            <th>5. Fuel & Power</th>
+            <th>6. Packaging Cost</th>
+          </tr>
+          <tr>
+            <td>
+              <p>Substandard Fabric Produced at Stage 1: {{ summaryData.substandardFabric?.subFabric1 || '' }} Kg</p>
+              <p>Substandard Fabric Produced at Stage 2: {{ summaryData.substandardFabric?.subFabric2 || '' }} Kg</p>
+            </td>
+            <td>
+              <p>Fuel Requirement of Machine 1: {{ summaryData.fuelPower?.fuelReq1 || '' }} Liters</p>
+              <p>Power Requirement of Machine 1: {{ summaryData.fuelPower?.powerReq1 || '' }} kWh</p>
+            </td>
+            <td>
+              <p>NTCF Dipping Cost: {{ summaryData.packagingCost?.packagingCost1 || '' }}</p>
+              <p>NICF Dipping Cost: {{ summaryData.packagingCost?.packagingCost2 || '' }}</p>
+            </td>
+          </tr>
+          <tr>
+            <th>7. Commission Charges</th>
+            <th>8. Processing Charges</th>
+            <th>9. Salaries Overhead</th>
+          </tr>
+          <tr>
+            <td>
+              <p>Commission on Sales 1: {{ summaryData.commissionCharges?.commission1 || '' }} %</p>
+              <p>Commission on Sales 2: {{ summaryData.commissionCharges?.commission2 || '' }} %</p>
+            </td>
+            <td>
+              <p>Contractual Team Expenses 1: {{ summaryData.processingCharges?.contractual1 || '' }}</p>
+              <p>Contractual Team Expenses 2: {{ summaryData.processingCharges?.contractual2 || '' }}</p>
+            </td>
+            <td>
+              <p>Number of Employees in Department 1: {{ summaryData.salariesOverhead?.employees1 || '' }}</p>
+              <p>Number of Employees in Department 2: {{ summaryData.salariesOverhead?.employees2 || '' }}</p>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="historicalData" class="his-table-header">
+  <h3 id="his-tlt">Historical Data for: {{ selectedTimestamp }}</h3>
+
+  <div class="his-table">
+    <table id="historical-table">
+      <thead>
+        <tr>
+          <th>1. Planned Quantity</th>
+          <th>2. Plant Capacity</th>
+          <th>3. BOM Preparation</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <p>NYFY HT Yarn Quantity: {{ historicalData[0]?.planned_quantity_fabricCat1 || '' }}</p>
+            <p>PTCF SPG Quantity: {{ historicalData[0]?.planned_quantity_fabricCat2 || '' }}</p>
+          </td>
+          <td>
+            <p>Electricity Capacity (Machine 1): {{ historicalData[0]?.plant_capacity_machine1Cap || '' }}</p>
+            <p>Compressed Air Capacity (Machine 2): {{ historicalData[0]?.plant_capacity_machine1Occ || '' }}</p>
+          </td>
+          <td>
+            <p>Steam Quantity: {{ historicalData[0]?.bom_preparation_rawMaterial1 || '' }}</p>
+            <p>Raw Water Quantity: {{ historicalData[0]?.bom_preparation_rawMaterial2 || '' }}</p>
+          </td>
+        </tr>
+        <tr>
+          <th>4. Substandard Fabric</th>
+          <th>5. Fuel & Power</th>
+          <th>6. Packaging Cost</th>
+        </tr>
+        <tr>
+          <td>
+            <p>Substandard Fabric Produced at Stage 1: {{ historicalData[0]?.substandard_fabric_quantity1 || '' }} Kg</p>
+            <p>Substandard Fabric Produced at Stage 2: {{ historicalData[0]?.substandard_fabric_quantity2 || '' }} Kg</p>
+          </td>
+          <td>
+            <p>Fuel Requirement of Machine 1: {{ historicalData[0]?.fuel_power_fuelReq1 || '' }} Liters</p>
+            <p>Power Requirement of Machine 1: {{ historicalData[0]?.fuel_power_powerReq1 || '' }} kWh</p>
+          </td>
+          <td>
+            <p>NTCF Dipping Cost: {{ historicalData[0]?.packaging_cost_cost1 || '' }}</p>
+            <p>NICF Dipping Cost: {{ historicalData[0]?.packaging_cost_cost2 || '' }}</p>
+          </td>
+        </tr>
+        <tr>
+          <th>7. Commission Charges</th>
+          <th>8. Processing Charges</th>
+          <th>9. Salaries Overhead</th>
+        </tr>
+        <tr>
+          <td>
+            <p>Commission on Sales 1: {{ historicalData[0]?.commission_charges_commission1 || '' }} %</p>
+            <p>Commission on Sales 2: {{ historicalData[0]?.commission_charges_commission2 || '' }} %</p>
+          </td>
+          <td>
+            <p>Contractual Team Expenses 1: {{ historicalData[0]?.processing_charges_contractual1 || '' }}</p>
+            <p>Contractual Team Expenses 2: {{ historicalData[0]?.processing_charges_contractual2 || '' }}</p>
+          </td>
+          <td>
+            <p>Number of Employees in Department 1: {{ historicalData[0]?.salaries_overhead_employees1 || '' }}</p>
+            <p>Number of Employees in Department 2: {{ historicalData[0]?.salaries_overhead_employees2 || '' }}</p>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+

@@ -1,28 +1,23 @@
-<div>
-  <h2>Login</h2>
-  <div>
-    <label for="username">Username:</label>
-    <input type="text" id="username" [(ngModel)]="username">
-  </div>
-  <div>
-    <label for="password">Password:</label>
-    <input type="password" id="password" [(ngModel)]="password">
-  </div>
-  
-  <div>
-    <label for="userRole">Select Role:</label>
-    <select id="userRole" [(ngModel)]="selectedRole">
-      <option value="" disabled selected>Select your role</option>
-      <option value="sales">Sales</option>
-      <option value="purchase">Purchase</option>
-      <option value="manufacturing">Manufacturing</option>
-      <option value="manager">Manager</option>
-    </select>
-  </div>
+<p>sales/purchase/manufacturing/manager</p>
+<div class="login-wrapper">
+  <div class="login-container">
+    <h2>Login</h2>
+    <form (submit)="login()">
+      <label for="username">Username:</label>
+      <input type="text" id="username" [(ngModel)]="username" name="username" required />
 
-  <div>
-    <button (click)="login(selectedRole)">Login</button>
+      <label for="password">Password:</label>
+      <input type="password" id="password" [(ngModel)]="password" name="password" required />
+
+      <button type="submit">Login</button>
+    </form>
   </div>
-  
-  <p *ngIf="loginMessage">{{ loginMessage }}</p>
 </div>
+
+      <!-- <select id="roleSelect" [(ngModel)]="username" name="username" required>
+        <option value="sales">Sales</option>
+        <option value="purchase">Purchase</option>
+        <option value="manufacturing">Manufacturing</option>
+        <option value="manager">Manager</option>
+      </select> -->
+  

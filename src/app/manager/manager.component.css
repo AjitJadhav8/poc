@@ -1,0 +1,77 @@
+select {
+    appearance: none; /* Remove default dropdown styling */
+    border: none; /* Remove border */
+    background: none; /* Remove background */
+    padding: 0.5rem; /* Add some padding */
+    font-size: 16px; /* Adjust font size */
+    cursor: pointer; /* Change cursor to pointer */
+}
+
+/* Optional: Style the options */
+option {
+    padding: 0.5rem; /* Add padding to options */
+    font-size: 16px; /* Adjust font size */
+}
+.his-table {
+    margin: 20px auto;
+    width: 90%; /* Adjusts the width of the table container */
+    max-width: 1200px; /* Limits the maximum width */
+    overflow-x: auto; /* Enables horizontal scrolling on small screens */
+}
+
+#historical-table {
+    width: 100%;
+    border-collapse: collapse; /* Removes the space between table cells */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+}
+
+#historical-table thead {
+    background-color: #f7f7f7; /* Light background for the header */
+    color: #333; /* Dark text color */
+}
+
+#historical-table th {
+    padding: 12px; /* Adds padding for table headers */
+    text-align: left; /* Aligns text to the left */
+    font-weight: bold; /* Makes the header text bold */
+    border-bottom: 2px solid #ddd; /* Adds a bottom border */
+}
+
+#historical-table tbody tr {
+    border-bottom: 1px solid #ddd; /* Adds a bottom border between rows */
+}
+
+#historical-table td {
+    padding: 10px; /* Adds padding for table cells */
+    vertical-align: top; /* Aligns text to the top of the cell */
+}
+
+#historical-table td p {
+    margin: 5px 0; /* Adds margin to paragraph elements */
+}
+
+#historical-table tr:nth-child(even) {
+    background-color: #f9f9f9; /* Light gray background for even rows */
+}
+
+#historical-table tr:hover {
+    background-color: #f1f1f1; /* Changes background color on hover */
+}
+
+#historical-table th,
+#historical-table td {
+    border: 3px solid #738598; /* Adds a green border to the first column */
+}
+
+
+#his-tlt {
+    text-align: center; /* Centers the text */
+    color: #4b5056; /* Sets the text color to a green shade */
+    font-size: 24px; /* Adjusts the font size */
+    margin: 20px 0; /* Adds margin above and below the heading */
+    padding: 10px; /* Adds padding around the text */
+    background-color: #f9f9f9; /* Light background color for the heading */
+    border-radius: 5px; /* Rounds the corners */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Adds a subtle shadow */
+    font-weight: 600; /* Makes the font slightly bolder */
+}

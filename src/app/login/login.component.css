@@ -1,17 +1,58 @@
-.login-navigation {
-    margin-top: 20px;
-  }
-  
-  .navigation-option {
-    padding: 10px;
-    background-color: #f0f0f0;
-    margin: 10px;
-    cursor: pointer;
-    border: 1px solid #ccc;
-    text-align: center;
-  }
-  
-  .navigation-option:hover {
-    background-color: #e0e0e0;
-  }
-  
+/* Wrapper to center the login component */
+.login-wrapper {
+  height: 100vh; /* Full viewport height */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f0f0f0;
+  margin: 0;
+}
+
+/* Container for the login form */
+.login-container {
+  width: 300px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Header styling */
+h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+/* Label styling */
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* Input and select fields styling */
+select, input {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+/* Button styling */
+button {
+  width: 100%;
+  padding: 10px;
+  background-color: #5c6f81;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* Button hover effect */
+button:hover {
+  background-color: #738598;
+}

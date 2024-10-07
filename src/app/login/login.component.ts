@@ -1,39 +1,76 @@
-import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
-import { FormsModule, NgModel } from '@angular/forms';
-import { ActivatedRoute, Router, RouterLink } from '@angular/router';
+import { TitleCasePipe } from '@angular/common';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { Component } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [RouterLink,CommonModule,FormsModule],
+  imports: [FormsModule,HttpClientModule,TitleCasePipe],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
+
 export class LoginComponent {
-  username: string = '';
-  password: string = '';
-  loginMessage: string = '';
+  username: any;
+  password: any;
 
-  private credentials: {
-    [key: string]: { id: string; password: string, allowedSteps: number[] }
-  } = {
-    sales: { id: 'sales', password: 'sales', allowedSteps: [7, 6] }, // Commission Charges, Packaging Cost
-    purchase: { id: 'purchase', password: 'purchase', allowedSteps: [1, 3, 4, 8] }, // Planned Quantity, BOM Preparation, Substandard Fabric, Processing Charges
-    manufacturing: { id: 'manufacturing', password: 'manufacturing', allowedSteps: [2, 5, 9] }, // Plant Capacity, Fuel & Power, Salaries Overhead
-    manager: { id: 'manager', password: 'manager', allowedSteps: [10] } // Budget Summary
-  };
-selectedRole: any;
+  constructor(private router: Router, private http: HttpClient) {}
 
-  constructor(private router: Router) {}
+  login() {
+    const credentials = { username: this.username, password: this.password };
 
-  login(loginType: 'sales' | 'purchase' | 'manufacturing' | 'manager') {
-    const userCredentials = this.credentials[loginType];
-    if (this.username === userCredentials.id && this.password === userCredentials.password) {
-      localStorage.setItem('allowedSteps', JSON.stringify(userCredentials.allowedSteps));
-      this.router.navigate(['/steps']);
-    } else {
-      this.loginMessage = `Invalid credentials for ${loginType}`;
-    }
-  }
+    this.http.post<{ message: string; username: string }>('http://localhost:3000/login', credentials)
+        .subscribe(
+            response => {
+                console.log('Response from backend:', response); // Log the entire response
+                
+                // Check if the username returned matches the expected values
+                switch (response.username) {
+                    case 'sales':
+                        this.router.navigate(['/sales']);
+                        break;
+                    case 'purchase':
+                        this.router.navigate(['/purchase']);
+                        break;
+                    case 'manufacturing':
+                        this.router.navigate(['/manufacturing']);
+                        break;
+                    case 'manager':
+                        this.router.navigate(['/manager']);
+                        break;
+                    default:
+                        alert('Unauthorized role');
+                        break;
+                }
+            },
+            error => {
+                alert(error.error.error); // Display error message
+            }
+        );
 }
+
+
+
+
+
+  
+}
+
+
+//   username: string = ''; 
+//   password: string = '';  
+//   private hardcodedCredentials = {
+//     user: 'user',
+//     password: 'user'
+//   };
+//   constructor(private router: Router) {}
+//   login() {
+//     if (this.password === this.hardcodedCredentials.password) {
+//       this.router.navigate([`/${this.username}`]);
+//     } else {
+//       alert('Invalid credentials. Please try again.');
+//     }
+//   }
+// }

@@ -1,0 +1,90 @@
+<div class="center-container">
+  <div class="sidebar-container">
+    <div class="sidebar">
+      <ul>
+        <li (click)="selectStep(2)">Step 2: Plant Capacity</li>
+        <li (click)="selectStep(5)">Step 5: Fuel & Power</li>
+        <li (click)="selectStep(9)">Step 9: Salaries & Overhead</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="result-container">
+    <div class="content">
+      <!-- Plant Capacity Content -->
+      <div *ngIf="selectedStep === 2">
+        <h3>Step 2: Plant Capacity</h3>
+        <div class="label-container">
+          <label for="machine1Cap">Electricity Capacity:</label>
+          <input
+            type="number"
+            id="machine1Cap"
+            [(ngModel)]="machine1Cap"
+            placeholder="Enter Machine 1 Capacity"
+          />
+        </div>
+        <div class="label-container">
+          <label for="machine1Occ">Compress Air Capacity:</label>
+          <input
+            type="number"
+            id="machine1Occ"
+            [(ngModel)]="machine1Occ"
+            placeholder="Enter Machine 1 Occupancy"
+          />
+        </div>
+        <button (click)="savePlantCapacity()">Save Plant Capacity</button>
+      </div>
+
+      <!-- Fuel & Power Content -->
+      <div *ngIf="selectedStep === 5">
+        <h3>Step 5: Fuel & Power</h3>
+        <div class="label-container">
+          <label for="fuelReq1">Fuel Requirement:</label>
+          <input
+            type="number"
+            id="fuelReq1"
+            [(ngModel)]="fuelReq1"
+            placeholder="Enter Fuel Requirement"
+          />
+        </div>
+        <div class="label-container">
+          <label for="powerReq1">Power Requirement:</label>
+          <input
+            type="number"
+            id="powerReq1"
+            [(ngModel)]="powerReq1"
+            placeholder="Enter Power Requirement"
+          />
+        </div>
+        <button (click)="saveFuelPower()">Save Fuel & Power</button>
+      </div>
+
+      <!-- Salaries & Overhead Content -->
+      <div *ngIf="selectedStep === 9">
+        <h3>Step 9: Salaries & Overhead</h3>
+        <div class="label-container">
+          <label for="employees1">Employees in Department 1: </label>
+          <input
+            type="number"
+            id="employees1"
+            [(ngModel)]="employees1"
+            placeholder="Enter Employees 1"
+          />
+        </div>
+        <div class="label-container">
+          <label for="employees2">Employees in Department 2:</label>
+          <input
+            type="number"
+            id="employees2"
+            [(ngModel)]="employees2"
+            placeholder="Enter Employees 2"
+          />
+        </div>
+        <button (click)="saveSalariesOverhead()">Save Salaries & Overhead</button>
+      </div>
+      <div class="logout-container">
+        <button (click)="logout()">Logout</button>
+      </div>
+    </div>
+  </div>
+</div>
