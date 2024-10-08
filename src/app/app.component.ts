@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule, NgModel } from '@angular/forms';
 import { Router, RouterOutlet } from '@angular/router';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -13,5 +13,5 @@ import { SalesComponent } from './sales/sales.component';
   styleUrl: './app.component.css'
 })
 export class AppComponent {
-  
+
 }

@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-manufacturing',
@@ -13,11 +14,7 @@ import { Router } from '@angular/router';
 })
 export class ManufacturingComponent {
 
-  selectedStep: number = 2; 
-
-  selectStep(step: number) {
-    this.selectedStep = step;
-  }
+  selectedStep: number = 2;
 
   machine1Cap: number | null = null;
   machine1Occ: number | null = null;
@@ -26,7 +23,11 @@ export class ManufacturingComponent {
   employees1: number | null = null;
   employees2: number | null = null;
 
-  constructor(private http: HttpClient, private router: Router) {}
+  http = inject(HttpClient)
+
+  constructor(private dataService: DataService, private router: Router) {}
+
+  // Method for logout
   logout() {
     this.router.navigate(['/login']);
   }
@@ -38,7 +39,7 @@ export class ManufacturingComponent {
       machine1Occ: this.machine1Occ,
     };
 
-    this.http.post('http://localhost:3000/save-plant-capacity', data).subscribe(
+    this.dataService.savePlantCapacity(data).subscribe(
       response => {
         console.log('Plant Capacity saved:', response);
         this.resetPlantCapacity();
@@ -56,7 +57,7 @@ export class ManufacturingComponent {
       powerReq1: this.powerReq1,
     };
 
-    this.http.post('http://localhost:3000/save-fuel-power', data).subscribe(
+    this.dataService.saveFuelPower(data).subscribe(
       response => {
         console.log('Fuel & Power saved:', response);
         this.resetFuelPower();
@@ -74,7 +75,7 @@ export class ManufacturingComponent {
       employees2: this.employees2,
     };
 
-    this.http.post('http://localhost:3000/save-salaries-overhead', data).subscribe(
+    this.dataService.saveSalariesOverhead(data).subscribe(
       response => {
         console.log('Salaries & Overhead saved:', response);
         this.resetSalariesOverhead();
@@ -85,6 +86,7 @@ export class ManufacturingComponent {
     );
   }
 
+  // Reset functions
   resetPlantCapacity() {
     this.machine1Cap = null;
     this.machine1Occ = null;
@@ -98,5 +100,10 @@ export class ManufacturingComponent {
   resetSalariesOverhead() {
     this.employees1 = null;
     this.employees2 = null;
+  }
+
+  // Method for selecting steps
+  selectStep(step: number) {
+    this.selectedStep = step;
   }
 }

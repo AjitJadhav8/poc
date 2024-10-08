@@ -1,8 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Router } from '@angular/router';
+import { DataService } from '../services/data.service';
 
 @Component({
   selector: 'app-purchase',
@@ -12,11 +13,10 @@ import { Router } from '@angular/router';
   styleUrl: './purchase.component.css'
 })
 export class PurchaseComponent {
+  http = inject(HttpClient);
 
-  selectedStep: number = 1; 
-  selectStep(step: number) {
-    this.selectedStep = step;
-  }
+
+  selectedStep: number = 1;
 
   fabricCat1: string = '';
   fabricCat2: string = '';
@@ -27,11 +27,15 @@ export class PurchaseComponent {
   contractual1: number | null = null;
   contractual2: number | null = null;
 
-  constructor(private http: HttpClient, private router: Router) {}
+  
 
+  constructor(private dataService: DataService, private router: Router) {}
+
+  // Method for logout
   logout() {
-    this.router.navigate(['/login']);  
+    this.router.navigate(['/login']);
   }
+
   // Method to save Planned Quantity (Step 1)
   savePlannedQuantity() {
     const data = {
@@ -39,7 +43,7 @@ export class PurchaseComponent {
       fabricCat2: this.fabricCat2,
     };
 
-    this.http.post('http://localhost:3000/save-planned-quantity', data).subscribe(
+    this.dataService.savePlannedQuantity(data).subscribe(
       response => {
         console.log('Planned Quantity saved:', response);
         this.resetPlannedQuantity();
@@ -57,7 +61,7 @@ export class PurchaseComponent {
       subFabric2: this.subFabric2,
     };
 
-    this.http.post('http://localhost:3000/save-substandard-fabric', data).subscribe(
+    this.dataService.saveSubstandardFabric(data).subscribe(
       response => {
         console.log('Substandard Fabric saved:', response);
         this.resetSubstandardFabric();
@@ -75,7 +79,7 @@ export class PurchaseComponent {
       rawMaterial2: this.rawMaterial2,
     };
 
-    this.http.post('http://localhost:3000/save-bom-preparation', data).subscribe(
+    this.dataService.saveBomPreparation(data).subscribe(
       response => {
         console.log('BOM Preparation saved:', response);
         this.resetBomPreparation();
@@ -93,7 +97,7 @@ export class PurchaseComponent {
       contractual2: this.contractual2,
     };
 
-    this.http.post('http://localhost:3000/save-processing-charges', data).subscribe(
+    this.dataService.saveProcessingCharges(data).subscribe(
       response => {
         console.log('Processing Charges saved:', response);
         this.resetProcessingCharges();
@@ -123,5 +127,10 @@ export class PurchaseComponent {
   resetProcessingCharges() {
     this.contractual1 = null;
     this.contractual2 = null;
+  }
+
+  // Method for selecting steps
+  selectStep(step: number) {
+    this.selectedStep = step;
   }
 }
