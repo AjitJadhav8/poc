@@ -86,5 +86,9 @@ export class DataService {
     return this.http.get<any>(`${this.apiUrl}/api/historical/data/${selectedTimestamp}`);
   }
 
+    // Login method
+    login(credentials: { username: string; password: string }): Observable<{ message: string; username: string }> {
+      return this.http.post<{ message: string; username: string }>(`${this.apiUrl}/login`, credentials);
+    }
   // Additional methods can be added here as needed for each component's functionality...
 }
