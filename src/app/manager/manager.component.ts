@@ -105,6 +105,22 @@ export class ManagerComponent {
       createdAt: formattedDate
     };
 
+    // alert("Summary Data Submitted.");
+    
+    alert("Submitted successfully\n" +
+      "Planned Quantity: FabricCat1: " + this.summaryData.plannedQuantity.fabricCat1 + ", FabricCat2: " + this.summaryData.plannedQuantity.fabricCat2 + "\n" +
+      "Plant Capacity: Machine1 Cap: " + this.summaryData.plantCapacity.machine1Cap + ", Machine1 Occupancy: " + this.summaryData.plantCapacity.machine1Occ + "\n" +
+      "BOM Preparation: Raw Material1: " + this.summaryData.bomPreparation.rawMaterial1 + ", Raw Material2: " + this.summaryData.bomPreparation.rawMaterial2 + "\n" +
+      "Substandard Fabric: SubFabric1: " + this.summaryData.substandardFabric.subFabric1 + ", SubFabric2: " + this.summaryData.substandardFabric.subFabric2 + "\n" +
+      "Fuel & Power: FuelReq1: " + this.summaryData.fuelPower.fuelReq1 + ", PowerReq1: " + this.summaryData.fuelPower.powerReq1 + "\n" +
+      "Packaging Cost: PackagingCost1: " + this.summaryData.packagingCost.packagingCost1 + ", PackagingCost2: " + this.summaryData.packagingCost.packagingCost2 + "\n" +
+      "Commission Charges: Commission1: " + this.summaryData.commissionCharges.commission1 + ", Commission2: " + this.summaryData.commissionCharges.commission2 + "\n" +
+      "Processing Charges: Contractual1: " + this.summaryData.processingCharges.contractual1 + ", Contractual2: " + this.summaryData.processingCharges.contractual2 + "\n" +
+      "Salaries Overhead: Employees1: " + this.summaryData.salariesOverhead.employees1 + ", Employees2: " + this.summaryData.salariesOverhead.employees2);
+
+
+
+
     this.dataService.saveSummaryData(payload).subscribe(
       response => {
         console.log('Submission successful!', response);

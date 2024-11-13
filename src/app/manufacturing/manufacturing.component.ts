@@ -39,12 +39,17 @@ export class ManufacturingComponent {
       machine1Occ: this.machine1Occ,
     };
 
+
+
     this.dataService.savePlantCapacity(data).subscribe(
       response => {
+        alert("Saved Plant Capacity: Machine1Cap = " + this.machine1Cap + ", Machine1Occ = " + this.machine1Occ);
         console.log('Plant Capacity saved:', response);
         this.resetPlantCapacity();
       },
       error => {
+        alert('Error saving Plant Capacity');
+
         console.error('Error saving Plant Capacity:', error);
       }
     );
@@ -59,6 +64,8 @@ export class ManufacturingComponent {
 
     this.dataService.saveFuelPower(data).subscribe(
       response => {
+        alert("Saved Fuel & Power: FuelReq1 = " + this.fuelReq1 + ", PowerReq1 = " + this.powerReq1);
+
         console.log('Fuel & Power saved:', response);
         this.resetFuelPower();
       },
@@ -77,6 +84,8 @@ export class ManufacturingComponent {
 
     this.dataService.saveSalariesOverhead(data).subscribe(
       response => {
+        alert("Saved Salaries & Overhead: Employees dept1 = " + this.employees1 + ", Employees dept2 = " + this.employees2);
+
         console.log('Salaries & Overhead saved:', response);
         this.resetSalariesOverhead();
       },

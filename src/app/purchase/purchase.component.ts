@@ -45,6 +45,7 @@ export class PurchaseComponent {
 
     this.dataService.savePlannedQuantity(data).subscribe(
       response => {
+        alert("Saved Planned Quantity: FabricCat1 = " + this.fabricCat1 + ", FabricCat2 = " + this.fabricCat2);
         console.log('Planned Quantity saved:', response);
         this.resetPlannedQuantity();
       },
@@ -63,6 +64,8 @@ export class PurchaseComponent {
 
     this.dataService.saveSubstandardFabric(data).subscribe(
       response => {
+        alert("Saved Substandard Fabric: SubFabric1 = " + this.subFabric1 + ", SubFabric2 = " + this.subFabric2);
+
         console.log('Substandard Fabric saved:', response);
         this.resetSubstandardFabric();
       },
@@ -81,6 +84,7 @@ export class PurchaseComponent {
 
     this.dataService.saveBomPreparation(data).subscribe(
       response => {
+        alert("Saved BOM Preparation: RawMaterial1 = " + this.rawMaterial1 + ", RawMaterial2 = " + this.rawMaterial2);
         console.log('BOM Preparation saved:', response);
         this.resetBomPreparation();
       },
@@ -99,12 +103,15 @@ export class PurchaseComponent {
 
     this.dataService.saveProcessingCharges(data).subscribe(
       response => {
+        alert("Saved Processing Charges: Contractual1 = " + this.contractual1 + ", Contractual2 = " + this.contractual2);
+
         console.log('Processing Charges saved:', response);
         this.resetProcessingCharges();
       },
       error => {
         console.error('Error saving Processing Charges:', error);
       }
+
     );
   }
 

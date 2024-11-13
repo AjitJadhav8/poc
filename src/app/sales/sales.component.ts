@@ -33,6 +33,8 @@ export class SalesComponent {
 
     this.dataService.savePackagingCost(data).subscribe(
       response => {
+        alert("Saved Packaging Cost: Cost1 = " + this.packagingCost1 + ", Cost2 = " + this.packagingCost2);
+
         console.log('Packaging Cost saved:', response);
         this.resetPackagingCost();
       },
@@ -51,6 +53,8 @@ export class SalesComponent {
 
     this.dataService.saveCommissionCharges(data).subscribe(
       response => {
+        alert("Saved Commission Charges: Commission1 = " + this.commission1 + ", Commission2 = " + this.commission2);
+
         console.log('Commission Charges saved:', response);
         this.resetCommissionCharges();
       },
